@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - virgilweb@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="virgilweb">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="b2b2cplatform"/>
+    <schema id="3" name="bbs"/>
+    <schema id="4" name="boolshop"/>
+    <schema id="5" name="boot_sql"/>
+    <schema id="6" name="chuangyedata"/>
+    <schema id="7" name="collection"/>
+    <schema id="8" name="db_mblog"/>
+    <schema id="9" name="financeplatform"/>
+    <schema id="10" name="flowerpaper"/>
+    <schema id="11" name="information_schema"/>
+    <schema id="12" name="jshoper3"/>
+    <schema id="13" name="logisticaldatabase"/>
+    <schema id="14" name="medicareplatform"/>
+    <schema id="15" name="mysql"/>
+    <schema id="16" name="nodeweb"/>
+    <schema id="17" name="organizationalplatform"/>
+    <schema id="18" name="otherwebplatform"/>
+    <schema id="19" name="performance_schema"/>
+    <schema id="20" name="renren-security"/>
+    <schema id="21" name="shufiberbyvirgilbase"/>
+    <schema id="22" name="shufiberwx"/>
+    <schema id="23" name="shuwx"/>
+    <schema id="24" name="shu_wp"/>
+    <schema id="25" name="test"/>
+    <schema id="26" name="virgil"/>
+    <schema id="27" name="virgilframework"/>
+    <schema id="28" name="virgilhibernate"/>
+    <schema id="29" name="virgilspring"/>
+    <schema id="30" name="virgil_wp"/>
+    <schema id="31" name="vshop"/>
+    <schema id="32" name="weiwp"/>
+    <schema id="33" name="wlmysql"/>
+    <schema id="34" name="world"/>
+    <schema id="35" name="yan"/>
+    <schema id="36" name="jty"/>
+  </database-model>
+</dataSource>
