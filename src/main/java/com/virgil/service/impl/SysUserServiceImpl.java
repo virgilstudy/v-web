@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.virgil.common.persistance.Page;
 import com.virgil.dao.SysUserEntityDao;
 import com.virgil.daoold.SysUserDao;
+import com.virgil.entity.SysRoleEntity;
 import com.virgil.entity.SysUserEntity;
 import com.virgil.service.SysUserService;
 import org.apache.commons.lang.StringUtils;
@@ -56,23 +57,25 @@ public class SysUserServiceImpl implements SysUserService {
 
     public List<SysUserEntity> queryList(Map<String, Object> map) {
         try {
-            mapper.writeValueAsString(map);
+            System.out.println(mapper.writeValueAsString(map));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        Page page = new Page(0, 5, "DESC", "userId");
-        Page<SysUserEntity> result = sysUserEntityDao.findPage(page);
+        Page page = new Page((int) map.get("offset"), (int) map.get("limit"), "userId", "DESC");
+        String hql = "select a from SysUserEntity a order by " + page.getOrderBy() + " " + page.getOrder();
+        System.out.println(hql);
+        Page<SysUserEntity> result = sysUserEntityDao.findPage(page, hql);
         try {
             System.out.println("***res***");
-            mapper.writeValueAsString(result);
+            System.out.println(mapper.writeValueAsString(result));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return sysUserDao.queryList(map);
+        return result.getList();
     }
 
     public int queryTotal(Map<String, Object> map) {
-        return sysUserDao.queryTotal(map);
+        return sysUserEntityDao.findAll().size();
     }
 
     public void save(SysUserEntity user) {
@@ -105,5 +108,11 @@ public class SysUserServiceImpl implements SysUserService {
         map.put("password", password);
         map.put("newPassword", newPassword);
         return sysUserDao.updatePassword(map);
+    }
+
+    @Override
+    public List<Long> queryRoleIdList(Long userId) {
+
+        return null;
     }
 }

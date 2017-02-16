@@ -1,5 +1,6 @@
 package com.virgil.service;
 
+import com.virgil.entity.SysRoleEntity;
 import com.virgil.entity.SysUserEntity;
 
 import java.util.List;
@@ -56,6 +57,9 @@ public interface SysUserService {
      * 删除用户
      */
     void deleteBatch(Long[] userIds);
+
+
+    List<Long> queryRoleIdList(Long userId);
 
     /**
      * 修改密码

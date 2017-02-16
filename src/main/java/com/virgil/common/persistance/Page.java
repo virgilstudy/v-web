@@ -14,11 +14,12 @@ public class Page<T> {
     //-- 分页参数 --//
     protected int pageNo = 1;
     protected int pageSize = -1;
+    private int totalPage;
     protected String orderBy = null;
     protected String order = null;
     protected boolean autoCount = true;
     //-- 返回结果 --//
-    protected List<T> result = new ArrayList();
+    protected List<T> list = new ArrayList();
     protected long totalCount = -1;
 
     public Page() {
@@ -35,6 +36,14 @@ public class Page<T> {
         this.order = order;
     }
 
+    public Page(List<T> list, int totalCount, int pageSize, int currPage) {
+        this.list = list;
+        this.totalCount = totalCount;
+        this.pageSize = pageSize;
+        this.pageNo = currPage;
+        this.totalPage = (int) Math.ceil((double) totalCount / pageSize);
+    }
+
     public int getPageNo() {
         return this.pageNo;
     }
@@ -42,17 +51,13 @@ public class Page<T> {
     /**
      * 获得页内的记录列表.
      */
-    public List<T> getResult() {
-        return result;
+    public List<T> getList() {
+        return list;
     }
 
-    /**
-     * 设置页内的记录列表.
-     */
-    public void setResult(final List<T> result) {
-        this.result = result;
+    public void setList(List<T> list) {
+        this.list = list;
     }
-
     /**
      * 获得总记录数, 默认值为-1.
      */

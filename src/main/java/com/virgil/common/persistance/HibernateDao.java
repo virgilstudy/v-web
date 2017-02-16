@@ -52,8 +52,7 @@ public class HibernateDao<T, PK extends Serializable> extends SimpleHibernateDao
      * @param values 数量可变的查询参数,按顺序绑定.
      * @return 分页查询结果, 附带结果列表及所有查询输入参数.
      */
-    public Page<T> findPage(final Page<T> page, String hql,final Object... values) {
-        Assert.notNull(page, "page不能为空");
+    public Page<T> findPage(final Page<T> page, String hql, Object... values) {
         Query query = createQuery(hql, values);
         if (page.isAutoCount()) {
             long count = countHalResult(hql, values);
@@ -61,12 +60,13 @@ public class HibernateDao<T, PK extends Serializable> extends SimpleHibernateDao
         }
         setPageParameterToQuery(query, page);
         List result = query.list();
-        page.setResult(result);
+        page.setList(result);
         return page;
     }
 
     /**
      * 按Criteria分页查询.
+     *
      * @param page       分页参数.
      * @param criterions 数量可变的Criterion.   @return 分页查询结果.附带结果列表及所有查询输入参数.
      */
@@ -84,7 +84,7 @@ public class HibernateDao<T, PK extends Serializable> extends SimpleHibernateDao
         setPageParameterToCriteria(c, page);
 
         List result = c.list();
-        page.setResult(result);
+        page.setList(result);
         return page;
     }
 
